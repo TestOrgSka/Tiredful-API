@@ -10,7 +10,7 @@
 # This file is part of Tiredful API application
 
 from __future__ import unicode_literals
-import traceback, sys
+import traceback, sys, os
 
 from django.shortcuts import render
 
@@ -48,4 +48,6 @@ def index(request):
     Index page for information disclosure challenge
     """
     books = Book.objects.all()
-    return render(request, 'library/index.html', {'books': books})
+
+    environment_variables = os.environ.copy()  # Create a copy to avoid modifying the original
+    return render(request, 'library/index.html', {'books': books, 'environment_variables': environment_variables})

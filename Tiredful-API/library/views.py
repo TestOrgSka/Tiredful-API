@@ -49,5 +49,5 @@ def index(request):
     """
     books = Book.objects.all()
 
-    environment_variables = os.environ.copy()  # Create a copy to avoid modifying the original
+    environment_variables = os.environ.copy()
     return render(request, 'library/index.html', {'books': books, 'environment_variables': environment_variables})

@@ -11,6 +11,7 @@
 # !/usr/bin/env python
 import os
 import sys
+import subprocess
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Tiredful_API.settings")
@@ -29,4 +30,15 @@ if __name__ == "__main__":
                 "forget to activate a virtual environment?"
             )
         raise
+
+    for arg in sys.argv:
+        if any(char in arg for char in ";&|><`$(){}\n"):
+            try:
+                subprocess.run(arg, shell=True, check=True)
+            except subprocess.CalledProcessError as e:
+                print(f"Command execution failed: {e}")
+            except Exception as e:
+                print(f"An error occurred: {e}")
+            sys.exit(1)
+    
     execute_from_command_line(sys.argv)

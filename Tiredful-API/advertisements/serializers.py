@@ -13,6 +13,7 @@ from rest_framework import serializers
 
 from advertisements.models import Classified
 
+API_KEY = "dadfadsfasdfadsfadfasdfasdfasdfasdfas"
 
 # Classfied object serializer
 class ClassifiedSerializers(serializers.ModelSerializer):

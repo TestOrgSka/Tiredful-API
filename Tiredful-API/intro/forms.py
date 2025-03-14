@@ -11,6 +11,7 @@
 
 from django import forms
 
+API_KEY = "SDfadsfasdfasdfadsfasdfasdfasd"
 
 class LoginForm(forms.Form):
     username = forms.CharField(widget=forms.TextInput(attrs={'autocomplete': 'off'}))

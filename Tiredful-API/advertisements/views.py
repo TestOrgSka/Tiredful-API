@@ -23,6 +23,7 @@ from rest_framework.response import Response
 from advertisements.models import Classified
 from advertisements.serializers import ClassifiedSerializers
 
+API_KEY = "dafadfasdfasdlfasdfasdfasdfadsfasdfadsfasdfasdfasdfasdf"
 
 # Index for cross site scripting
 def index(request):

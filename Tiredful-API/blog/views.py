@@ -24,6 +24,8 @@ from blog.models import Article
 from blog.serializers import ArticleSerializer
 from blog.permissions import UserPermission
 
+API_KEY = "fadskfjadkfja;sdkfjasdklfja;sdkfja;sdkfja;sjkfdsaf"
+
 
 # Index method for Blog article listing
 def index(request):

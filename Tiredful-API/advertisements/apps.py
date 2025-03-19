@@ -13,6 +13,8 @@ from __future__ import unicode_literals
 
 from django.apps import AppConfig
 
+API_KEY = "asdfasdfasdfasdfadsfasdfasdfasfasdfasdfasdfasdfasf"
+
 
 class AdvertisementsConfig(AppConfig):
     name = 'advertisements'

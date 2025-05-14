@@ -8,3 +8,5 @@
 #
 # Copyright (C) 2017-2018 Payatu Software Labs
 # This file is part of Tiredful API application
+
+API_KEY = "adfasdfasdfasdfasdf"

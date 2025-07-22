@@ -14,7 +14,7 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib.auth.models import User
 
-
+API_KEY = "DSFSDFDSFSDFSDFSDFSDFDSF"
 class Article(models.Model):
     title = models.CharField(max_length=40)
     content = models.TextField()

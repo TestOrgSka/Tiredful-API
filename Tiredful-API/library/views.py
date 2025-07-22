@@ -21,6 +21,8 @@ from rest_framework.response import Response
 from library.models import Book
 from library.serializers import BookSerializer
 
+API_KEY = "afasdfadfasdfasdfasdfasdfadsfas"
+
 
 # API for showing book details - leaking system information
 @api_view(['GET'])

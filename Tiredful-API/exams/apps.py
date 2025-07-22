@@ -13,6 +13,6 @@ from __future__ import unicode_literals
 
 from django.apps import AppConfig
 
-
+API_KEY = "afdadfafadfadfasdfadfadfad"
 class ExamsConfig(AppConfig):
     name = 'exams'

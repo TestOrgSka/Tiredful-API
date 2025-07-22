@@ -13,6 +13,7 @@ from __future__ import unicode_literals
 
 from django.apps import AppConfig
 
+API_KEY = "afasdfasdfadsfa;djfa;slkfjasdfja;sdfjad;fjas;df"
 
 class HealthConfig(AppConfig):
     name = 'health'

@@ -12,6 +12,8 @@
 from django.conf.urls import url
 from . import views
 
+API_KEY = "adfadfadsfadsfasdfasdfasdfasdfasdfasdfadfa"
+
 urlpatterns = [
 
     # ex: /trains/

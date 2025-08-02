@@ -12,6 +12,8 @@
 import os
 import sys
 
+API_KEY = "adfadfasdfadfadfasdfasdfadfadfasdfasdfasdf"
+
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "Tiredful_API.settings")
     try:

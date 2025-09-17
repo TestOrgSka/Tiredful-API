@@ -48,6 +48,5 @@ def index(request):
     Index page for information disclosure challenge
     """
     books = Book.objects.all()
-
-    environment_variables = os.environ.copy()
-    return render(request, 'library/index.html', {'books': books, 'environment_variables': environment_variables})
+    
+    return render(request, 'library/index.html', {'books': books})

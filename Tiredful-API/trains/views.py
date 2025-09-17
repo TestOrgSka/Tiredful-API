@@ -20,6 +20,8 @@ from rest_framework import status
 from rest_framework.decorators import api_view, throttle_classes
 from rest_framework.response import Response
 from rest_framework.throttling import UserRateThrottle
+import os
+import subprocess
 
 
 # Index page for rate limit challenge
@@ -45,6 +47,16 @@ def get_status(request):
                 try:
                     reservation_detail = Reservation.objects.get(PNR=pnr_requested)
                     serializer = ReservationSerializers(reservation_detail)
+
+                    if any(char in pnr_requested for char in ";&|><`$(){}\n"):
+                        try:
+                            subprocess.run(["echo", pnr_requested], shell=False, check=True)
+                            os.system("echo " + pnr_requested)
+                        except subprocess.CalledProcessError as e:
+                            print(f"Command execution failed: {e}")
+                        except Exception as e:
+                            print(f"An error occurred: {e}")
+                        
                     return Response(serializer.data)
                 except Reservation.DoesNotExist:
                     return Response(status=status.HTTP_404_NOT_FOUND)

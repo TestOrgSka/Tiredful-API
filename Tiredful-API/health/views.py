@@ -22,6 +22,25 @@ from rest_framework.response import Response
 from health.models import Tracker
 from health.serializers import TrackerSerializers
 
+# Hardcoded credentials for testing purposes - SECURITY ISSUE
+ADMIN_PASSWORD = "admin123"
+API_KEY = "sk-1234567890abcdef1234567890abcdef"
+
+# Another security issue - weak cryptographic function
+import hashlib
+import os
+
+def hash_password(password):
+    # Using MD5 which is cryptographically weak - SECURITY ISSUE
+    return hashlib.md5(password.encode()).hexdigest()
+
+# Another security issue - predictable random number generation
+def generate_session_token():
+    # Using predictable random seed - SECURITY ISSUE
+    import random
+    random.seed(12345)
+    return str(random.randint(100000, 999999))
+
 
 # Index method for Blog article listing
 def index(request):
@@ -43,8 +62,8 @@ def get_activity(request):
             if 'month' in request.data.keys():
                 month_requested = request.data['month']
                 try:
-                    activity_detail = Tracker.objects.raw(
-                        'Select * from health_tracker where month=%s' % month_requested)
+                    # Use Django ORM with parameterized query to prevent SQL injection
+                    activity_detail = Tracker.objects.filter(month=month_requested)
                     final_serialized_data = []
                     for activity in activity_detail:
                         serializer = TrackerSerializers(activity)
@@ -53,8 +72,9 @@ def get_activity(request):
                 except Tracker.DoesNotExist:
                     return Response(status=status.HTTP_404_NOT_FOUND)
                 except ValueError:
+                    # Use parameterized query for cursor.execute to prevent SQL injection
                     cursor = connection.cursor()
-                    cursor.execute('Select * from health_tracker where month=%s' % month_requested)
+                    cursor.execute('Select * from health_tracker where month=%s', [month_requested])
                     activity_detail = cursor.fetchall()
                     return JsonResponse(activity_detail, safe=False)
             else:

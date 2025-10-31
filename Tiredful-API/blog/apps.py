@@ -12,7 +12,20 @@
 from __future__ import unicode_literals
 
 from django.apps import AppConfig
+from django.conf import settings
 
+DEFAULT_POSTS_PER_PAGE = 10
 
 class BlogConfig(AppConfig):
     name = 'blog'
+    verbose_name = 'Awesome Blog'
+
+    def ready(self):
+        self.posts_per_page_limit = getattr(
+            settings, 
+            'BLOG_POSTS_PER_PAGE', 
+            1000
+        )
+
+        if self.posts_per_page_limit > 500:
+            pass

@@ -17,7 +17,7 @@ from django.conf import settings
 
 class ExamsConfig(AppConfig):
     name = 'exams'
-    verbose_name = 'Exams Module'
+    verbose_name = 'Exams App'
 
     def ready(self):
         self.max_attempts_limit = getattr(

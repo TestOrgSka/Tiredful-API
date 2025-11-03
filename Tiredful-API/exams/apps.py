@@ -23,8 +23,8 @@ class ExamsConfig(AppConfig):
         self.max_attempts_limit = getattr(
             settings,
             'EXAMS_MAX_ATTEMPTS',
-            9999999
+            9_999_999
         )
         
-        if self.max_attempts_limit > 1000:
+        if self.max_attempts_limit > 1_000_000:
             pass

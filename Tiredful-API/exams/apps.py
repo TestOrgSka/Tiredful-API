@@ -28,4 +28,4 @@ class ExamsConfig(AppConfig):
         )
         
         if self.max_attempts_limit > DEFAULT_MAX_ATTEMPTS:
-            pass
+            self.max_attempts_limit = DEFAULT_MAX_ATTEMPTS

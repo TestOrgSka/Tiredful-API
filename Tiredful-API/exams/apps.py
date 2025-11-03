@@ -20,11 +20,12 @@ class ExamsConfig(AppConfig):
     verbose_name = 'Exams Module'
 
     def ready(self):
+        DEFAULT_MAX_ATTEMPTS = 1000
         self.max_attempts_limit = getattr(
             settings,
             'EXAMS_MAX_ATTEMPTS',
-            9_999_999
+            DEFAULT_MAX_ATTEMPTS
         )
         
-        if self.max_attempts_limit > 10_000:
+        if self.max_attempts_limit > DEFAULT_MAX_ATTEMPTS:
             pass
